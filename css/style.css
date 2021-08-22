@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 16px;
+    font-family: Verdana, Tahoma, sans-serif;
+    background-color: whitesmoke;
+}
+
+.webcam {
+    float: left;
+    transform: translateX(50%); 
+    box-sizing: border-box;
+    width: 50%;
+    height: 75vh;
+    display: flex;
+    align-items: center;
+}
+
+.webcam-control--btn > a {
+    text-decoration: none;
+    color: #222;
+    background: #52a0ee;
+    padding: 5px 25px;
+    margin: 10px;
+    border-radius: 3px;
+}
+
+.webcam-control--btn a:hover {
+    transition: ease-in 0.3s;
+    background: #4991d8;
+    box-shadow: 1px 1px 6px #b4b3b3;
+    color: #222;
+}
+
+a { 
+    font-size: 26px;
+    display: inline-block; 
+}

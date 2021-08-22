@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VideoCam-Stream with HTML, CSS, JS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"> 
+</head>
+<body>
+    
+    <div class="webcam">
+        <div class="video">
+            <video id="video" autoplay></video>
+        </div>
+        <!-- Start & Stop Button -->
+        <div class="webcam-control--btn">
+            <a href="#!" class="btn-start" onclick="start()">
+                <i class="fas fa-camera-retro"></i>
+            </a>
+            <a href="#!" class="btn-stop" onclick="StopWebCam()">
+                <i class="far fa-stop-circle"></i>
+            </a>
+        </div>
+    </div>
+
+    <script lang="text/javascript">
+        // Stop Button Code //
+        const StopWebCam = function() {
+            let stream = video.srcObject;
+            let tracks = stream.getTracks();
+
+            for (let i = 0; i < tracks.length; i++) {
+                let btn = tracks[i];
+                btn.stop();
+            }
+            video.srcObject = null;
+        }
+        // Video Start Button & Access Code //
+        const start = function() {
+            let video = document.getElementById('video'),
+            vendorURL = window.URL || window.webkitURL;
+
+            if (navigator.mediaDevices.getUserMedia) {
+                navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function(stream) {
+                    video.srcObject = stream;
+                })
+                .catch(function(error) {
+                    console.log('Etwas ist schief gelaufen!');
+                });
+            }
+        }
+        // Start function //
+        $(function() { start(); }); 
+    </script>
+
+
+</body>
+</html>
